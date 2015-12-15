@@ -1,0 +1,16 @@
+ redmine:
+   image: redmine
+   ports:
+     - 80:3000
+   links:
+     - postgres
+   volumes:
+     - ./redmine-data:/usr/src/redmine/files
+
+ postgres:
+   image: postgres
+   environment:
+     POSTGRES_USER: "redmine"
+     POSTGRES_PASSWORD: "secret"
+   volumes:
+     - ./pg-data:/var/lib/postgresql/data
